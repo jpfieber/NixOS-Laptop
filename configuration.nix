@@ -113,6 +113,7 @@
     microsoft-edge
     p7zip               # CLI only
     peazip              # GUI for 7-zip
+    handbrake
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
