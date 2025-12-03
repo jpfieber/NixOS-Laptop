@@ -101,6 +101,9 @@ in
     home.packages = with pkgs; [
       # Your user-specific packages would go here
     ];
+    
+    # Import rclone mounts configuration
+    imports = [ ./rclone-mounts.nix ];
   };
 
   # Install firefox.
