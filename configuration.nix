@@ -95,25 +95,7 @@ in
   };
 
   # This block enables and configures Home Manager for the specified user
-  home-manager.users.jpfieber = {
-    home.stateVersion = "25.11";
-    programs.home-manager.enable = true;
-    home.packages = with pkgs; [
-      # Your user-specific packages would go here
-    ];
-    
-    # Import rclone mounts configuration
-    imports = [ ./rclone-mounts.nix ];
-    
-    # KDE screen lock timeout (in seconds)
-    # Set to 0 to disable auto-lock, or change to desired seconds (e.g., 600 = 10 minutes)
-    home.file.".config/kscreenlockerrc".text = ''
-      [Daemon]
-      Autolock=true
-      LockOnResume=true
-      Timeout=0
-    '';
-  };
+  home-manager.users.jpfieber = import ./home.nix;
 
   # Install firefox.
   programs.firefox.enable = true;
