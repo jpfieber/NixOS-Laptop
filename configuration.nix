@@ -110,6 +110,7 @@
     cuetools
     vlc
     google-chrome
+    microsoft-edge
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
