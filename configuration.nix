@@ -101,6 +101,7 @@
   environment.systemPackages = with pkgs; [
     git
     audacity
+    puddletag           # alternative to MP3Tag
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
