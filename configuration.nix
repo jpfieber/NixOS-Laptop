@@ -137,6 +137,7 @@ in
     mediainfo-gui
     ffmpeg_7
     exiftool
+    hdhomerun-config-gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
