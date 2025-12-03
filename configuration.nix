@@ -103,7 +103,7 @@
     audacity
     puddletag
     notepadqq
-    sumatra-pdf-reader
+    sumpdf
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
