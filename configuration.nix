@@ -103,7 +103,7 @@
     audacity
     puddletag
     notepadqq
-    sumpdf
+    okular  # KDE PDF reader (alternative to SumatraPDF which is Windows-only)
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
