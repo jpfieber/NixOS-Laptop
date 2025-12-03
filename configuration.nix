@@ -136,6 +136,7 @@ in
     mediainfo
     mediainfo-gui
     ffmpeg_7
+    exiftool
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
