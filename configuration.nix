@@ -107,11 +107,12 @@
     vscode
     obsidian
     picard
-    cuetools
+    cuetools            # CLI only
     vlc
     google-chrome
     microsoft-edge
-    p7zip
+    p7zip               # CLI only
+    peazip              # GUI for 7-zip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
