@@ -132,6 +132,7 @@ in
     strawberry          # potential musicbee alternative
     weasis              # Alternative to MicroDICOM
     onedrive
+    onedrivegui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
