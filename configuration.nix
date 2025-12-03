@@ -100,6 +100,10 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    audacity
+    puddletag
+    notepadqq
+    sumatra-pdf-reader
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
