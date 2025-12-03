@@ -139,7 +139,8 @@ in
     exiftool
     libhdhomerun          # Not working
     hdhomerun-config-gui  # Not working
-    kio-gdrive          # Google Drive Client with GUI
+    rclone              # alternative to Google Drive
+    rclone-browser      # alternative to Google Drive
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
