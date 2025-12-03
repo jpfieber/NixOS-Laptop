@@ -106,6 +106,7 @@
     kdePackages.okular  # alternative to SumatraPDF
     vscode
     obsidian
+    picard
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
