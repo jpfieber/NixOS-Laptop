@@ -16,7 +16,7 @@
   home.file.".config/kscreenlockerrc" = {
     text = ''
       [Daemon]
-      Autolock=true
+      Autolock=false
       LockOnResume=true
       Timeout=0
     '';
