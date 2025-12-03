@@ -102,6 +102,7 @@
     git
     audacity
     puddletag           # alternative to MP3Tag
+    notepadqq           # alternative to NotePad++
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
