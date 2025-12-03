@@ -131,6 +131,7 @@ in
     mp3gain
     strawberry          # potential musicbee alternative
     weasis              # Alternative to MicroDICOM
+    onedrive
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
