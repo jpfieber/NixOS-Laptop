@@ -109,7 +109,7 @@
     picard
     cuetools
     vlc
-    github-desktop
+    chrome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
