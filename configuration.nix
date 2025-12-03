@@ -128,6 +128,7 @@ in
     peazip              # GUI for 7-zip
     handbrake
     imagemagick
+    mp3gain
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
