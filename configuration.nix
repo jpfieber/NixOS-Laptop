@@ -136,7 +136,7 @@ in
     rclone              # alternative to Google Drive
     rclone-browser      # alternative to Google Drive
     pavucontrol         # Graphical Audio Mixer for Topping DX3 Pro+ control
-    plasma-browser-integration  # Native host for Plasma Integration browser extension
+    kdePackages.plasma-browser-integration  # Native host for Plasma Integration browser extension
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
