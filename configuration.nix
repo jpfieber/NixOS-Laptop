@@ -105,6 +105,7 @@
     #notepadqq           # alternative to NotePad++ (errors on install)
     kdePackages.okular  # alternative to SumatraPDF
     vscode
+    obsidian
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
