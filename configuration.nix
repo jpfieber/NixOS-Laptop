@@ -90,6 +90,15 @@
     ];
   };
 
+  # This block enables and configures Home Manager for the specified user
+  home-manager.users.jpfieber = {
+    home.stateVersion = "25.11";
+    programs.home-manager.enable = true;
+    home.packages = with pkgs; [
+      # Your user-specific packages would go here
+    ];
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
