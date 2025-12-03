@@ -104,6 +104,15 @@ in
     
     # Import rclone mounts configuration
     imports = [ ./rclone-mounts.nix ];
+    
+    # KDE screen lock timeout (in seconds)
+    # Set to 0 to disable auto-lock, or change to desired seconds (e.g., 600 = 10 minutes)
+    home.file.".config/kscreenlockerrc".text = ''
+      [Daemon]
+      Autolock=true
+      LockOnResume=true
+      Timeout=0
+    '';
   };
 
   # Install firefox.
