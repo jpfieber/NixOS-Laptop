@@ -130,7 +130,8 @@ in
     imagemagick
     mp3gain
     strawberry          # potential musicbee alternative
-    deadbeef            # potential musicbee alternative
+    #deadbeef            # potential musicbee alternative
+    #weasis              # Alternative to MicroDICOM
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
