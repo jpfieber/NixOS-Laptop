@@ -117,6 +117,7 @@ in
     cuetools            # CLI only
     vlc
     google-chrome
+    chromium            # Better Plasma integration than google-chrome
     microsoft-edge
     p7zip               # CLI only
     peazip              # GUI for 7-zip
