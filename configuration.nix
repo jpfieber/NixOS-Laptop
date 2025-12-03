@@ -127,6 +127,7 @@ in
     p7zip               # CLI only
     peazip              # GUI for 7-zip
     handbrake
+    imagemagick
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
