@@ -135,6 +135,7 @@ in
     onedrivegui
     mediainfo
     mediainfo-gui
+    ffmpeg_7
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
