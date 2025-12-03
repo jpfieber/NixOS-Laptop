@@ -104,6 +104,7 @@
     puddletag           # alternative to MP3Tag
     #notepadqq           # alternative to NotePad++ (errors on install)
     kdePackages.okular  # alternative to SumatraPDF
+    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
