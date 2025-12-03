@@ -137,8 +137,9 @@ in
     mediainfo-gui
     ffmpeg_7
     exiftool
-    libhdhomerun
-    hdhomerun-config-gui
+    libhdhomerun          # Not working
+    hdhomerun-config-gui  # Not working
+    kio-gdrive          # Google Drive Client with GUI
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
