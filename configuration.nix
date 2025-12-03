@@ -137,6 +137,7 @@ in
     mediainfo-gui
     ffmpeg_7
     exiftool
+    libhdhomerun
     hdhomerun-config-gui
   ];
 
