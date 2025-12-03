@@ -129,6 +129,8 @@ in
     handbrake
     imagemagick
     mp3gain
+    strawberry          # potential musicbee alternative
+    deadbeef            # potential musicbee alternative
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
