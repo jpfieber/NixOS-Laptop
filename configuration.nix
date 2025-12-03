@@ -133,6 +133,8 @@ in
     weasis              # Alternative to MicroDICOM
     onedrive
     onedrivegui
+    mediainfo
+    mediainfo-gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
