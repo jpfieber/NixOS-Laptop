@@ -17,8 +17,28 @@
     text = ''
       [Daemon]
       Autolock=false
-      LockOnResume=true
+      LockOnResume=false
       Timeout=0
+      
+      [Greeter][Wallpaper][org.kde.image][General]
+      Image=
+    '';
+    force = true;
+  };
+  
+  # Also disable screen blanking in power management
+  home.file.".config/powermanagementprofilesrc" = {
+    text = ''
+      [AC][DPMSControl]
+      idleTime=0
+      lockBeforeTurnOff=0
+      
+      [AC][HandleButtonEvents]
+      lidAction=0
+      
+      [Battery][DPMSControl]
+      idleTime=0
+      lockBeforeTurnOff=0
     '';
     force = true;
   };
