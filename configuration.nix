@@ -141,6 +141,7 @@ in
     hdhomerun-config-gui  # Not working
     rclone              # alternative to Google Drive
     rclone-browser      # alternative to Google Drive
+    pavucontrol         # Graphical Audio Mixer for Topping DX3 Pro+ control
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -155,6 +156,13 @@ in
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # Enable xrdp for RDP access
+  services.xrdp = {
+    enable = true;
+    defaultWindowManager = "startplasma-x11";
+    openFirewall = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
