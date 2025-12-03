@@ -101,9 +101,9 @@
   environment.systemPackages = with pkgs; [
     git
     audacity
-    puddletag
-    notepadqq
-    okular  # KDE PDF reader (alternative to SumatraPDF which is Windows-only)
+    puddletag           # alternative to MP3Tag
+    notepadqq           # alternative to NotePad++
+    kdePackages.okular  # alternative to SumatraPDF
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
