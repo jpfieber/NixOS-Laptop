@@ -138,6 +138,7 @@ in
     rclone-browser      # alternative to Google Drive
     pavucontrol         # Graphical Audio Mixer for Topping DX3 Pro+ control
     kdePackages.plasma-browser-integration  # Native host for Plasma Integration browser extension
+    whipper             # Accurate CD ripper (alternative to EAC)
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
