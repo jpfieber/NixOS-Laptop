@@ -138,6 +138,8 @@ in
     rclone-browser      # alternative to Google Drive
     pavucontrol         # Graphical Audio Mixer for Topping DX3 Pro+ control
     kdePackages.plasma-browser-integration  # Native host for Plasma Integration browser extension
+    nix-software-center # GUI app store for NixOS
+    nixos-conf-editor   # GUI editor for NixOS configuration
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

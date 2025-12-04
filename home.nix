@@ -43,6 +43,19 @@
     force = true;
   };
   
+  # Disable KWallet password prompt
+  home.file.".config/kwalletrc" = {
+    text = ''
+      [Wallet]
+      Enabled=true
+      First Use=false
+      Prompt on Open=false
+      Close When Idle=false
+      Idle Timeout=0
+    '';
+    force = true;
+  };
+  
   # Set desktop background to black
   home.file.".config/plasma-org.kde.plasma.desktop-appletsrc" = {
     text = ''
