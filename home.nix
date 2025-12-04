@@ -48,18 +48,14 @@ in
         };
       };
     };
-  };
-  
-  # Disable KWallet password prompt
-  home.file.".config/kwalletrc" = {
-    text = ''
-      [Wallet]
-      Enabled=true
-      First Use=false
-      Prompt on Open=false
-      Close When Idle=false
-      Idle Timeout=0
-    '';
-    force = true;
+    
+    # KWallet configuration
+    configFile = {
+      "kwalletrc"."Wallet"."Enabled" = true;
+      "kwalletrc"."Wallet"."First Use" = false;
+      "kwalletrc"."Wallet"."Prompt on Open" = false;
+      "kwalletrc"."Wallet"."Close When Idle" = false;
+      "kwalletrc"."Wallet"."Idle Timeout" = 0;
+    };
   };
 }
