@@ -159,6 +159,31 @@ in
     defaultWindowManager = "startplasma-x11";
     openFirewall = true;
   };
+  
+  # NFS mounts for Synology NAS
+  fileSystems."/mnt/nas/home" = {
+    device = "192.168.86.63:/volume1/homes/jpfieber";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
+  
+  fileSystems."/mnt/nas/media" = {
+    device = "192.168.86.63:/volume1/Media";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
+  
+  fileSystems."/mnt/nas/obsidian" = {
+    device = "192.168.86.63:/volume1/Obsidian";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
+  
+  fileSystems."/mnt/nas/shared" = {
+    device = "192.168.86.63:/volume1/Shared";
+    fsType = "nfs";
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
