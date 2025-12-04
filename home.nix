@@ -33,18 +33,18 @@ in
     kscreenlocker = {
       autoLock = false;
       lockOnResume = false;
-      timeout = 0;
+      timeout = null;
     };
     
-    # Power management
+    # Power management - set to null to disable
     powerdevil = {
       AC = {
         autoSuspend = {
           action = "nothing";
-          idleTimeout = 0;
+          idleTimeout = null;
         };
         turnOffDisplay = {
-          idleTimeout = 0;
+          idleTimeout = null;
         };
       };
     };
