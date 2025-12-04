@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
+let
+  plasma-manager = builtins.fetchTarball "https://github.com/nix-community/plasma-manager/archive/trunk.tar.gz";
+in
 {
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;
@@ -11,7 +14,7 @@
   # Import rclone mounts and plasma-manager
   imports = [ 
     ./rclone-mounts.nix
-    <plasma-manager/modules>
+    "${plasma-manager}/modules"
   ];
   
   # Declarative KDE Plasma configuration using plasma-manager
