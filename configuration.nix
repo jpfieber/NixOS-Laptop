@@ -270,6 +270,12 @@ in
 
   # Ensure NFS client services are enabled
   services.rpcbind.enable = true;
+  services.nfs.idmapd.enable = true;
+  services.nfs.idmapd.settings = {
+    General = {
+      Domain = "localdomain";
+    };
+  };
 
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
   sops = {
