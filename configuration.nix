@@ -239,22 +239,17 @@ in
     options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
   };
 
-  # Sops secrets configuration - COMMENTED OUT until secrets are encrypted
-  # After installing sops and age, follow SETUP_SECRETS.md to:
-  # 1. Generate age key from SSH host key
-  # 2. Create .sops.yaml with your age public key
-  # 3. Encrypt secrets/rclone.conf with sops
-  # 4. Uncomment this section and rebuild
-  # sops = {
-  #   defaultSopsFile = ./secrets/rclone.conf;
-  #   age.keyFile = "/var/lib/sops-nix/key.txt";
-  #   secrets.rclone-conf = {
-  #     path = "/home/jpfieber/.config/rclone/rclone.conf";
-  #     owner = "jpfieber";
-  #     group = "users";
-  #     mode = "0600";
-  #   };
-  # };
+  # Sops secrets configuration - automatically deploys encrypted rclone.conf
+  sops = {
+    defaultSopsFile = ./secrets/rclone.conf;
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+    secrets.rclone-conf = {
+      path = "/home/jpfieber/.config/rclone/rclone.conf";
+      owner = "jpfieber";
+      group = "users";
+      mode = "0600";
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
