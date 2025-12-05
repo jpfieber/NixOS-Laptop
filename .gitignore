@@ -1,5 +1,5 @@
-# Unencrypted rclone config (old location)
-rclone.conf
+# Unencrypted rclone config (old location - root directory only)
+/rclone.conf
 
 # Sops configuration (contains age public key, can be committed)
 # .sops.yaml is fine to commit
