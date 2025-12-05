@@ -138,9 +138,11 @@
       kdePackages.kate
     #  thunderbird
     ];
-    shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
-    };
+  };
+
+  # Shell aliases for all users
+  environment.shellAliases = {
+    nrs = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
   };
 
   # This block enables and configures Home Manager for the specified user
