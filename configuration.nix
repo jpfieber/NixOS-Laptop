@@ -270,6 +270,15 @@ in
   # Ensure NFS client services are enabled
   services.rpcbind.enable = true;
 
+  # Fix NFS mount point permissions - ensure mount points are accessible
+  systemd.tmpfiles.rules = [
+    "d /mnt/nas 0755 root root -"
+    "d /mnt/nas/home 0755 root root -"
+    "d /mnt/nas/media 0755 root root -"
+    "d /mnt/nas/obsidian 0755 root root -"
+    "d /mnt/nas/shared 0755 root root -"
+  ];
+
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
