@@ -241,7 +241,7 @@ in
 
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
   sops = {
-    defaultSopsFile = ./secrets/rclone.conf;
+    defaultSopsFile = ./secrets/secrets.yaml;
     age.keyFile = "/var/lib/sops-nix/key.txt";
     secrets.rclone-conf = {
       path = "/home/jpfieber/.config/rclone/rclone.conf";
