@@ -62,7 +62,33 @@ in
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.brlaser ];  # Brother laser printer driver
+  };
+  
+  # Pre-configure Brother printer
+  hardware.printers = {
+    ensurePrinters = [
+      {
+        name = "Brother_HL-L2340D";
+        location = "Network";
+        deviceUri = "ipp://192.168.86.19/ipp/print";
+        model = "drv:///brlaser.drv/brl2340d.ppd";
+        ppdOptions = {
+          PageSize = "Letter";
+        };
+      }
+    ];
+    ensureDefaultPrinter = "Brother_HL-L2340D";
+  };
+  
+  # Avahi for network printer discovery
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -126,19 +152,19 @@ in
     mp3gain
     strawberry          # potential musicbee alternative
     weasis              # Alternative to MicroDICOM
-    onedrive
-    onedrivegui
     mediainfo
     mediainfo-gui
     ffmpeg_7
     exiftool
     libhdhomerun          # Not working
     hdhomerun-config-gui  # Not working
-    rclone              # alternative to Google Drive
-    rclone-browser      # alternative to Google Drive
+    rclone              # alternative to Google Drive & OneDrive
+    rclone-browser      # alternative to Google Drive & OneDrive
     pavucontrol         # Graphical Audio Mixer for Topping DX3 Pro+ control
     kdePackages.plasma-browser-integration  # Native host for Plasma Integration browser extension
     whipper             # Accurate CD ripper (alternative to EAC)
+    balena-etcher       # Alternative to Rufus for USB boot drive building from ISO
+    ventoy              # multi-iso bootloader
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
