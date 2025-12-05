@@ -163,8 +163,8 @@ in
     pavucontrol         # Graphical Audio Mixer for Topping DX3 Pro+ control
     kdePackages.plasma-browser-integration  # Native host for Plasma Integration browser extension
     whipper             # Accurate CD ripper (alternative to EAC)
-    balena-etcher       # Alternative to Rufus for USB boot drive building from ISO
-    ventoy              # multi-iso bootloader
+    ventoy-full         # multi-iso bootloader
+    ventoy-full-qt      # Gui for ventoy
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
