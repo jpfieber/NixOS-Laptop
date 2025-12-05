@@ -1,9 +1,0 @@
-# Copy this to .sops.yaml after getting your age public key
-# Run on NixOS: ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub
-keys:
-  - &admin_laptop YOUR_AGE_PUBLIC_KEY_HERE  # Replace with actual age key
-creation_rules:
-  - path_regex: secrets/.*\.conf$
-    key_groups:
-    - age:
-      - *admin_laptop

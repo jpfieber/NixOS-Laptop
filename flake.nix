@@ -25,7 +25,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.jpfieber = import ./home.nix;
+          home-manager.users.jpfieber = import ./home/home.nix;
         }
       ];
     };
