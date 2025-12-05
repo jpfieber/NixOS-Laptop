@@ -3,7 +3,7 @@
 keys:
   - &admin_laptop age1q3ntzavjjy565kzldeqsaxrnmqlmw626uq3vk9hhlsj47frt05rsvmh2q4
 creation_rules:
-  - path_regex: secrets/rclone\.conf$
+  - path_regex: secrets/.*\.(yaml|conf)$
     key_groups:
     - age:
       - *admin_laptop
