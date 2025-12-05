@@ -19,14 +19,24 @@ The rebuild might fail because secrets/rclone.conf isn't encrypted yet. That's O
 # Create directory for the key
 sudo mkdir -p /var/lib/sops-nix
 
+# Find SSH host keys
+ls -la /etc/ssh/ssh_host_*
+
 # Install ssh-to-age if not already available
 nix-shell -p ssh-to-age
 
-# Generate the age private key
+# Generate the age private key (use the key type that exists on your system)
+# Try ed25519 first:
 sudo ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key -o /var/lib/sops-nix/key.txt
 
+# If ed25519 doesn't exist, try rsa:
+# sudo ssh-to-age -private-key -i /etc/ssh/ssh_host_rsa_key -o /var/lib/sops-nix/key.txt
+
 # Get the age PUBLIC key (you'll need this for .sops.yaml)
+# Use the same key type as above:
 ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub
+# OR if using RSA:
+# ssh-to-age < /etc/ssh/ssh_host_rsa_key.pub
 ```
 
 Copy the output from the last command - it looks like: `age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`

@@ -100,6 +100,15 @@ in
     openFirewall = true;
   };
 
+  # Enable OpenSSH server (needed for sops-nix to use host keys)
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;  # More secure - use keys only
+      PermitRootLogin = "no";
+    };
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
