@@ -131,7 +131,8 @@ in
   
   # Allow insecure packages
   nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.07"
+    "ventoy-1.1.07"      # contains binary blobs that can't be audited for security
+    "ventoy-qt5-1.1.07"  # Qt5 version of ventoy with same security concerns
   ];
 
   # List packages installed in system profile. To search, run:
