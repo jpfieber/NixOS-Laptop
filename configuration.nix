@@ -129,7 +129,7 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.jpfieber = {
     isNormalUser = true;
     description = "Joseph Fieber";
@@ -138,6 +138,9 @@
       kdePackages.kate
     #  thunderbird
     ];
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake ~/nixos-config#nixos";
+    };
   };
 
   # This block enables and configures Home Manager for the specified user
