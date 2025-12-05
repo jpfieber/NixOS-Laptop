@@ -230,23 +230,22 @@ in
     options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
   };
 
-  # Sops secrets configuration
-  # After first rebuild, run these commands on NixOS to set up secrets:
-  # 1. nix-shell -p sops ssh-to-age
-  # 2. sudo ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key -o /var/lib/sops-nix/key.txt
-  # 3. ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub  # Note the age public key
-  # 4. Create .sops.yaml in this directory with the age public key
-  # 5. sops secrets/rclone.conf  # Edit and encrypt your rclone.conf
-  sops = {
-    defaultSopsFile = ./secrets/rclone.conf;
-    age.keyFile = "/var/lib/sops-nix/key.txt";
-    secrets.rclone-conf = {
-      path = "/home/jpfieber/.config/rclone/rclone.conf";
-      owner = "jpfieber";
-      group = "users";
-      mode = "0600";
-    };
-  };
+  # Sops secrets configuration - COMMENTED OUT until secrets are encrypted
+  # After installing sops and age, follow SETUP_SECRETS.md to:
+  # 1. Generate age key from SSH host key
+  # 2. Create .sops.yaml with your age public key
+  # 3. Encrypt secrets/rclone.conf with sops
+  # 4. Uncomment this section and rebuild
+  # sops = {
+  #   defaultSopsFile = ./secrets/rclone.conf;
+  #   age.keyFile = "/var/lib/sops-nix/key.txt";
+  #   secrets.rclone-conf = {
+  #     path = "/home/jpfieber/.config/rclone/rclone.conf";
+  #     owner = "jpfieber";
+  #     group = "users";
+  #     mode = "0600";
+  #   };
+  # };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
