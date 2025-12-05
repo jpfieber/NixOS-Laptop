@@ -218,25 +218,25 @@ in
   fileSystems."/mnt/nas/home" = {
     device = "192.168.86.63:/volume1/homes/jpfieber";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" "rw" ];
   };
   
   fileSystems."/mnt/nas/media" = {
     device = "192.168.86.63:/volume1/Media";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" "rw" ];
   };
   
   fileSystems."/mnt/nas/obsidian" = {
     device = "192.168.86.63:/volume1/Obsidian";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" "rw" ];
   };
   
   fileSystems."/mnt/nas/shared" = {
     device = "192.168.86.63:/volume1/Shared";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=4" "rw" ];
   };
 
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
