@@ -6,18 +6,28 @@
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+  sops-nix = builtins.fetchTarball "https://github.com/Mic92/sops-nix/archive/master.tar.gz";
 in
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       (import "${home-manager}/nixos")
+      (import "${sops-nix}/modules/sops")
     ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
+
+  # Swap configuration - helps prevent OOM kills during builds
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 4096; # 4GB swap file
+    }
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -171,6 +181,8 @@ in
     whipper             # Accurate CD ripper (alternative to EAC)
     ventoy-full         # multi-iso bootloader
     ventoy-full-qt      # Gui for ventoy
+    age                 # Encryption tool for sops
+    sops                # Secret management tool
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -216,6 +228,24 @@ in
     device = "192.168.86.63:/volume1/Shared";
     fsType = "nfs";
     options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
+
+  # Sops secrets configuration
+  # After first rebuild, run these commands on NixOS to set up secrets:
+  # 1. nix-shell -p sops ssh-to-age
+  # 2. sudo ssh-to-age -private-key -i /etc/ssh/ssh_host_ed25519_key -o /var/lib/sops-nix/key.txt
+  # 3. ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub  # Note the age public key
+  # 4. Create .sops.yaml in this directory with the age public key
+  # 5. sops secrets/rclone.conf  # Edit and encrypt your rclone.conf
+  sops = {
+    defaultSopsFile = ./secrets/rclone.conf;
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+    secrets.rclone-conf = {
+      path = "/home/jpfieber/.config/rclone/rclone.conf";
+      owner = "jpfieber";
+      group = "users";
+      mode = "0600";
+    };
   };
 
   # Open ports in the firewall.
