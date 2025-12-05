@@ -40,6 +40,8 @@ ssh-to-age < /etc/ssh/ssh_host_ed25519_key.pub
 ```
 
 Copy the output from the last command - it looks like: `age1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
+age1q3ntzavjjy565kzldeqsaxrnmqlmw626uq3vk9hhlsj47frt05rsvmh2q4
+
 
 ### 3. Configure sops
 ```bash

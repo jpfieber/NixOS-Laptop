@@ -1,0 +1,9 @@
+# Sops configuration for encrypting secrets with age
+# Age public key derived from SSH host key
+keys:
+  - &admin_laptop age1q3ntzavjjy565kzldeqsaxrnmqlmw626uq3vk9hhlsj47frt05rsvmh2q4
+creation_rules:
+  - path_regex: secrets/.*\.conf$
+    key_groups:
+    - age:
+      - *admin_laptop
