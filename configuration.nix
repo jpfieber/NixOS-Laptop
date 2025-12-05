@@ -279,6 +279,18 @@ in
     "d /mnt/nas/shared 0755 root root -"
   ];
 
+  # Service to fix mount point permissions after automount
+  systemd.services.fix-nfs-permissions = {
+    description = "Fix NFS mount point permissions";
+    after = [ "remote-fs.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.coreutils}/bin/chmod 755 /mnt/nas/home /mnt/nas/media /mnt/nas/obsidian /mnt/nas/shared";
+    };
+  };
+
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
