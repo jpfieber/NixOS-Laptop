@@ -214,15 +214,14 @@ in
     openFirewall = true;
   };
   
-  # NFS mounts for Synology NAS (using same config as server)
+  # NFS mounts for Synology NAS - using NFSv3 to avoid ACL issues
   fileSystems."/mnt/nas/home" = {
     device = "192.168.86.63:/volume1/homes/jpfieber";
     fsType = "nfs";
     options = [ 
-      "nfsvers=4.1"
+      "nfsvers=3"
       "rw"
       "noatime"
-      "lookupcache=positive"
       "_netdev"
       "x-systemd.automount"
       "x-systemd.idle-timeout=600"
@@ -233,7 +232,7 @@ in
     device = "192.168.86.63:/volume1/Media";
     fsType = "nfs";
     options = [ 
-      "nfsvers=4.1"
+      "nfsvers=3"
       "rw"
       "noatime"
       "_netdev"
@@ -246,7 +245,7 @@ in
     device = "192.168.86.63:/volume1/Obsidian";
     fsType = "nfs";
     options = [ 
-      "nfsvers=4.1"
+      "nfsvers=3"
       "rw"
       "noatime"
       "_netdev"
@@ -259,7 +258,7 @@ in
     device = "192.168.86.63:/volume1/Shared";
     fsType = "nfs";
     options = [ 
-      "nfsvers=4.1"
+      "nfsvers=3"
       "rw"
       "noatime"
       "_netdev"
