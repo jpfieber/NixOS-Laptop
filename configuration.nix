@@ -11,8 +11,11 @@
       ./storage.nix
     ];
 
-  # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Enable flakes and increase download buffer
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    download-buffer-size = 134217728;  # 128MB
+  };
 
   # Bootloader.
   boot.loader.grub.enable = true;
