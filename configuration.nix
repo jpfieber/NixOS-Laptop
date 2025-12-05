@@ -214,30 +214,62 @@ in
     openFirewall = true;
   };
   
-  # NFS mounts for Synology NAS
+  # NFS mounts for Synology NAS (using same config as server)
   fileSystems."/mnt/nas/home" = {
     device = "192.168.86.63:/volume1/homes/jpfieber";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=3" ];
+    options = [ 
+      "nfsvers=4.1"
+      "rw"
+      "noatime"
+      "lookupcache=positive"
+      "_netdev"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+    ];
   };
   
   fileSystems."/mnt/nas/media" = {
     device = "192.168.86.63:/volume1/Media";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=3" ];
+    options = [ 
+      "nfsvers=4.1"
+      "rw"
+      "noatime"
+      "_netdev"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+    ];
   };
   
   fileSystems."/mnt/nas/obsidian" = {
     device = "192.168.86.63:/volume1/Obsidian";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=3" ];
+    options = [ 
+      "nfsvers=4.1"
+      "rw"
+      "noatime"
+      "_netdev"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+    ];
   };
   
   fileSystems."/mnt/nas/shared" = {
     device = "192.168.86.63:/volume1/Shared";
     fsType = "nfs";
-    options = [ "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "nfsvers=3" ];
+    options = [ 
+      "nfsvers=4.1"
+      "rw"
+      "noatime"
+      "_netdev"
+      "x-systemd.automount"
+      "x-systemd.idle-timeout=600"
+    ];
   };
+
+  # Ensure NFS client services are enabled
+  services.rpcbind.enable = true;
 
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
   sops = {
