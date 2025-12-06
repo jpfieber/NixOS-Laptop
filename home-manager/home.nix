@@ -6,6 +6,8 @@
   
   home.packages = with pkgs; [
     # Your user-specific packages would go here
+    rnix
+    rnix-lsp
   ];
   
   # Import app-specific configurations

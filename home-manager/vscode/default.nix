@@ -76,6 +76,15 @@ in
           "window.restoreWindows" = "all";
           "files.restoreUndoStack" = true;
 
+          # Per-language overrides: disable formatOnSave for slow formatters
+          "[nix]" = {
+            "editor.formatOnSave" = true;
+            # Prefer using an available fast formatter/LSP (rnix / rnix-lsp).
+            # You may need to configure the Nix extension to use the rnix LSP
+            # or set the `editor.defaultFormatter` here to the extension that
+            # provides rnix-format when installed.
+          };
+
           # Updates & telemetry (managed by Nix)
           "update.mode" = "none";
           "telemetry.telemetryLevel" = "off";
