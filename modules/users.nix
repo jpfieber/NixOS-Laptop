@@ -13,5 +13,5 @@
   };
 
   # This block enables and configures Home Manager for the specified user
-  home-manager.users.jpfieber = import ../home/home.nix;
+  home-manager.users.jpfieber = import ../home-manager/home.nix;
 }
