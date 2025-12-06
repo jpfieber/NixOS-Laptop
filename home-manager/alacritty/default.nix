@@ -83,7 +83,7 @@ in
         };
         
         # Shell
-        shell = {
+        terminal.shell = {
           program = "${pkgs.powershell}/bin/pwsh";
         };
         
