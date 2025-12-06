@@ -17,6 +17,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    powershell
+    python3
     audacity
     puddletag           # alternative to MP3Tag
     #notepadqq           # alternative to NotePad++ (errors on install)

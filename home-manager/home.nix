@@ -12,11 +12,13 @@
   imports = [ 
     ./rclone
     ./git
+    ./vscode
   ];
   
   # Enable app modules
   apps.rclone.enable = true;
   apps.git.enable = true;
+  apps.vscode.enable = true;
   
   # Note: KDE Plasma appearance settings (theme, icons, wallpaper, etc.) 
   # are configured manually through System Settings.
