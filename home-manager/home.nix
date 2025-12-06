@@ -31,6 +31,28 @@
   apps.powershell.enable = true;
   apps.ghostty.enable = true;
   apps.syncthing.enable = true;
+
+  # Custom VS Code keybindings (terminal copy/paste behavior)
+  xdg.configFile."Code/User/keybindings.json".text = ''
+    [
+      {
+        "key": "ctrl+c",
+        "command": "workbench.action.terminal.copySelection",
+        "when": "terminalFocus && terminalTextSelected"
+      },
+      {
+        "key": "ctrl+c",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": { "text": "\u0003" },
+        "when": "terminalFocus && !terminalTextSelected"
+      },
+      {
+        "key": "ctrl+v",
+        "command": "workbench.action.terminal.paste",
+        "when": "terminalFocus"
+      }
+    ]
+  '';
   
   # Note: KDE Plasma appearance settings (theme, icons, wallpaper, etc.) 
   # are configured manually through System Settings.
