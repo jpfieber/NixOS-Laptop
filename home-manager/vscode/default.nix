@@ -49,6 +49,7 @@ in
         "workbench.iconTheme" = "vs-seti";
         "workbench.startupEditor" = "none";
         "workbench.tips.enabled" = false;
+        "workbench.welcome.enabled" = false;
         
         # Disable welcome/release notes
         "update.showReleaseNotes" = false;
@@ -61,6 +62,12 @@ in
         # GitHub authentication
         "github.gitAuthentication" = true;
         "git.enableCommitSigning" = false;
+        
+        # GitHub Copilot settings
+        "github.copilot.enable" = {
+          "*" = true;
+        };
+        "github.copilot.editor.enableAutoCompletions" = true;
         
         # Extension recommendations
         "extensions.ignoreRecommendations" = true;
