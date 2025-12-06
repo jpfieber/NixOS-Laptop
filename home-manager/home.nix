@@ -4,11 +4,13 @@
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;
   
-  home.packages = with pkgs; [
-    # Your user-specific packages would go here
-    rnix
-    rnix-lsp
-  ];
+  home.packages = with pkgs; (
+    [
+      # Your user-specific packages would go here
+    ]
+    ++ (if pkgs.lib.hasAttr "rnix" pkgs then [ pkgs.rnix ] else [])
+    ++ (if pkgs.lib.hasAttr "rnix-lsp" pkgs then [ pkgs.rnix-lsp ] else [])
+  );
   
   # Import app-specific configurations
   imports = [ 
