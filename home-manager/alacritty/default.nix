@@ -82,10 +82,11 @@ in
           };
         };
         
-        # Shell
-        terminal.shell = {
-          program = "${pkgs.powershell}/bin/pwsh";
-        };
+        # Shell - uses system default (bash)
+        # Uncomment to use PowerShell instead:
+        # terminal.shell = {
+        #   program = "${pkgs.powershell}/bin/pwsh";
+        # };
         
         # Key bindings - Ctrl+C/V for copy/paste
         keyboard.bindings = [

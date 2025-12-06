@@ -14,6 +14,7 @@
     ./git
     ./vscode
     ./alacritty
+    ./powershell
   ];
   
   # Enable app modules
@@ -21,6 +22,7 @@
   apps.git.enable = true;
   apps.vscode.enable = true;
   apps.alacritty.enable = true;
+  apps.powershell.enable = true;
   
   # Note: KDE Plasma appearance settings (theme, icons, wallpaper, etc.) 
   # are configured manually through System Settings.
