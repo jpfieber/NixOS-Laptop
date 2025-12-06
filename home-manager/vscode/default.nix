@@ -11,7 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.vscode = {
       enable = true;
-      
+
       profiles.default = {
         # User settings
         userSettings = {
@@ -79,8 +79,14 @@ in
           # Updates & telemetry (managed by Nix)
           "update.mode" = "none";
           "telemetry.telemetryLevel" = "off";
+
+          # GitHub Copilot (install Copilot + Copilot Chat extension below)
+          "github.copilot.enable" = {
+            "*" = true;
+          };
+          "github.copilot.editor.enableAutoCompletions" = true;
         };
-        
+
         # Extensions
         extensions = with pkgs.vscode-extensions; [
           # Nix language support
@@ -110,6 +116,8 @@ in
           yzhang.markdown-all-in-one
           editorconfig.editorconfig
           ms-vscode.powershell
+          github.copilot
+          github.copilot-chat
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         # Add additional extensions from marketplace here
         # Format: { name = "extension-name"; publisher = "publisher"; version = "x.x.x"; sha256 = "..."; }
