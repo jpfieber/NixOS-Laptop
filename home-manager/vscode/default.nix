@@ -85,6 +85,7 @@ in
           # Python
           ms-python.python
           ms-python.vscode-pylance
+          ms-python.debugpy
 
           # Formatters / linters
           esbenp.prettier-vscode
@@ -98,8 +99,17 @@ in
           ms-azuretools.vscode-docker
           ms-vscode-remote.remote-ssh
 
+          # Markdown / note tooling
+          davidanson.vscode-markdownlint
+          foam.foam-vscode
+          shd101wyy.markdown-preview-enhanced
+          tomoki1207.pdf
+
           # Languages / LSPs
           rust-lang.rust-analyzer
+
+          # Web / UI
+          svelte.svelte-vscode
 
           # Productivity / misc
           streetsidesoftware.code-spell-checker
