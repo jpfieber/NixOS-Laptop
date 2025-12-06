@@ -14,9 +14,19 @@ in
     xdg.configFile."ghostty/config".text = ''
       # Font settings
       font-size = 12
+      font-family = monospace
       
-      # Theme - using Breeze to match KDE
-      theme = Breeze
+      # Theme - Breeze Dark to match KDE Konsole
+      background = 232627
+      foreground = fcfcfc
+      
+      # Cursor
+      cursor-color = fcfcfc
+      cursor-style = block
+      
+      # Window padding
+      window-padding-x = 10
+      window-padding-y = 10
       
       # Copy on select
       copy-on-select = clipboard
