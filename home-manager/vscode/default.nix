@@ -106,28 +106,9 @@ in
           github.copilot
           github.copilot-chat
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        # Extensions exported from your current VS Code installation (added as marketplace entries)
-        { publisher = "bierner"; name = "markdown-yaml-preamble"; }
-        { publisher = "cweijan"; name = "vscode-typora"; }
-        { publisher = "davidanson"; name = "vscode-markdownlint"; }
-        { publisher = "foam"; name = "foam-vscode"; }
-        { publisher = "github"; name = "vscode-github-actions"; }
-        { publisher = "jebbs"; name = "markdown-extended"; }
-        { publisher = "kortina"; name = "vscode-markdown-notes"; }
-        { publisher = "lencerf"; name = "beancount"; }
-        { publisher = "mathematic"; name = "vscode-pdf"; }
-        { publisher = "ms-playwright"; name = "playwright"; }
-        { publisher = "ms-python"; name = "debugpy"; }
-        { publisher = "ms-python"; name = "vscode-python-envs"; }
-        { publisher = "mushan"; name = "vscode-paste-image"; }
-        { publisher = "ritwickdey"; name = "liveserver"; }
-        { publisher = "shd101wyy"; name = "markdown-preview-enhanced"; }
-        { publisher = "svelte"; name = "svelte-vscode"; }
-        { publisher = "svsool"; name = "markdown-memo"; }
-        { publisher = "tobiastao"; name = "vscode-md"; }
-        { publisher = "tomoki1207"; name = "pdf"; }
-        { publisher = "willasm"; name = "obsidian-md-vsc"; }
-        { publisher = "zeitnergmbh"; name = "auto-git"; }
+        # Marketplace extension entries must include `version` and `sha256` for
+        # reproducible builds. Leave empty for now — add specific pinned
+        # entries later if you want these installed declaratively.
       ];
       };
     };
