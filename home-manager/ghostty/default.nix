@@ -20,6 +20,9 @@ in
       background = 232627
       foreground = fcfcfc
       
+      # Transparency (0.0 = fully transparent, 1.0 = fully opaque)
+      background-opacity = 0.95
+      
       # Cursor
       cursor-color = fcfcfc
       cursor-style = block
