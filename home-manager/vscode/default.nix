@@ -61,6 +61,9 @@ in
         ms-python.python
         ms-python.vscode-pylance
         
+        # Node.js / JavaScript / TypeScript
+        dbaeumer.vscode-eslint
+        
         # PowerShell
         ms-vscode.powershell
         

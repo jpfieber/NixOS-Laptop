@@ -19,6 +19,7 @@
     git
     powershell
     python3
+    nodejs
     audacity
     puddletag           # alternative to MP3Tag
     #notepadqq           # alternative to NotePad++ (errors on install)
