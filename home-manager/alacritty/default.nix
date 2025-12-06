@@ -46,30 +46,30 @@ in
           size = 12.0;
         };
         
-        # Colors (One Dark theme)
+        # Colors (Breeze - matches KDE Konsole)
         colors = {
           primary = {
-            background = "#282c34";
-            foreground = "#abb2bf";
+            background = "#232627";
+            foreground = "#fcfcfc";
           };
           normal = {
-            black = "#282c34";
-            red = "#e06c75";
-            green = "#98c379";
-            yellow = "#d19a66";
-            blue = "#61afef";
-            magenta = "#c678dd";
-            cyan = "#56b6c2";
-            white = "#abb2bf";
+            black = "#232627";
+            red = "#ed1515";
+            green = "#11d116";
+            yellow = "#f67400";
+            blue = "#1d99f3";
+            magenta = "#9b59b6";
+            cyan = "#1abc9c";
+            white = "#fcfcfc";
           };
           bright = {
-            black = "#5c6370";
-            red = "#e06c75";
-            green = "#98c379";
-            yellow = "#d19a66";
-            blue = "#61afef";
-            magenta = "#c678dd";
-            cyan = "#56b6c2";
+            black = "#7f8c8d";
+            red = "#c0392b";
+            green = "#1cdc9a";
+            yellow = "#fdbc4b";
+            blue = "#3daee9";
+            magenta = "#8e44ad";
+            cyan = "#16a085";
             white = "#ffffff";
           };
         };
