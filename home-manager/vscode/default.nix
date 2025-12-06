@@ -16,7 +16,10 @@ in
         # User settings imported from your existing VS Code configuration
         userSettings = {
           "[nix]" = {
-            "editor.formatOnSave" = true;
+            # Disable automatic formatting for Nix files to avoid the slow
+            # "Nix IDE" formatter running on save. Re-enable after configuring
+            # a fast formatter/LSP (rnix/rnix-lsp) if you prefer auto-format.
+            "editor.formatOnSave" = false;
           };
           "breadcrumbs.enabled" = true;
           "editor.codeActionsOnSave" = {
