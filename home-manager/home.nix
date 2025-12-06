@@ -15,6 +15,7 @@
     ./vscode
     ./alacritty
     ./powershell
+    ./ghostty
   ];
   
   # Enable app modules
@@ -23,6 +24,7 @@
   apps.vscode.enable = true;
   apps.alacritty.enable = true;
   apps.powershell.enable = true;
+  apps.ghostty.enable = true;
   
   # Note: KDE Plasma appearance settings (theme, icons, wallpaper, etc.) 
   # are configured manually through System Settings.
