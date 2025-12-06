@@ -23,21 +23,24 @@ in
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = cfg.userName;
-      userEmail = cfg.userEmail;
       
-      extraConfig = {
+      settings = {
+        user = {
+          name = cfg.userName;
+          email = cfg.userEmail;
+        };
+        
         init.defaultBranch = "main";
         pull.rebase = false;
         credential.helper = "store";
-      };
-      
-      aliases = {
-        st = "status";
-        co = "checkout";
-        br = "branch";
-        ci = "commit";
-        lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+        
+        alias = {
+          st = "status";
+          co = "checkout";
+          br = "branch";
+          ci = "commit";
+          lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+        };
       };
     };
   };

@@ -12,8 +12,9 @@ in
     programs.vscode = {
       enable = true;
       
-      # User settings
-      userSettings = {
+      profiles.default = {
+        # User settings
+        userSettings = {
         # Editor settings
         "editor.formatOnSave" = true;
         "editor.fontSize" = 14;
@@ -50,10 +51,10 @@ in
         # Disable telemetry and updates (managed by Nix)
         "telemetry.telemetryLevel" = "off";
         "update.mode" = "none";
-      };
-      
-      # Extensions
-      extensions = with pkgs.vscode-extensions; [
+        };
+        
+        # Extensions
+        extensions = with pkgs.vscode-extensions; [
         # Nix language support
         jnoortheen.nix-ide
         
@@ -79,6 +80,7 @@ in
         # Add additional extensions from marketplace here
         # Format: { name = "extension-name"; publisher = "publisher"; version = "x.x.x"; sha256 = "..."; }
       ];
+      };
     };
   };
 }
