@@ -13,95 +13,65 @@ in
       enable = true;
 
       profiles.default = {
-        # User settings
+        # User settings imported from your existing VS Code configuration
         userSettings = {
-          # Editor & formatting
-          "editor.formatOnSave" = true;
-          "editor.formatOnPaste" = true;
-          "editor.tabSize" = 2;
-          "editor.rulers" = [ 80 100 ];
-          "editor.codeActionsOnSave" = {
-            "source.organizeImports" = true;
-            "source.fixAll" = true;
+          "[nix]" = {
+            "editor.formatOnSave" = true;
           };
-
-          # Visual / UX
-          "workbench.startupEditor" = "none";
-          "workbench.editor.enablePreview" = false;
           "breadcrumbs.enabled" = true;
+          "editor.codeActionsOnSave" = {
+            "source.fixAll" = true;
+            "source.organizeImports" = true;
+          };
+          "editor.formatOnPaste" = true;
+          "editor.formatOnSave" = true;
+          "editor.rulers" = [ 80 100 ];
+          "editor.tabSize" = 2;
+          "eslint.run" = "onSave";
+          "eslint.validate" = [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
           "explorer.compactFolders" = false;
-
-          # Files / performance
-          "files.trimTrailingWhitespace" = true;
-          "files.insertFinalNewline" = true;
           "files.autoSave" = "afterDelay";
           "files.autoSaveDelay" = 1000;
-
-          "files.watcherExclude" = {
-            "**/.git/**" = true;
-            "**/node_modules/**" = true;
-            "**/target/**" = true;
-            "**/.cache/**" = true;
-          };
-
-          "search.exclude" = {
-            "**/node_modules" = true;
-            "**/target" = true;
-          };
-
           "files.exclude" = {
             "**/.DS_Store" = true;
             "**/.git" = true;
           };
-
-          # Git / SCM
-          "git.autofetch" = true;
-          "git.enableSmartCommit" = true;
-          "git.confirmSync" = false;
+          "files.insertFinalNewline" = true;
+          "files.restoreUndoStack" = true;
+          "files.trimTrailingWhitespace" = true;
+          "files.watcherExclude" = {
+            "**/.cache/**" = true;
+            "**/.git/**" = true;
+            "**/node_modules/**" = true;
+            "**/target/**" = true;
+          };
           "git.alwaysShowStagedChangesResourceGroup" = true;
-
-          # Terminal
-          "terminal.integrated.defaultProfile.linux" = "bash";
-          "terminal.integrated.fontFamily" = "monospace";
-          "terminal.integrated.fontSize" = 14;
-          # Make copy/paste easier in the integrated terminal
-          "terminal.integrated.copyOnSelection" = true;
+          "git.autofetch" = true;
+          "git.confirmSync" = false;
+          "git.enableSmartCommit" = true;
+          "github.copilot.editor.enableAutoCompletions" = true;
+          "github.copilot.enable" = { "*" = true; };
+          "python.formatting.blackArgs" = [ "--line-length" "88" ];
+          "python.formatting.provider" = "black";
+          "search.exclude" = {
+            "**/node_modules" = true;
+            "**/target" = true;
+          };
+          "telemetry.telemetryLevel" = "off";
           "terminal.integrated.commandsToSkipShell" = [
             "workbench.action.terminal.copySelection"
             "workbench.action.terminal.paste"
             "workbench.action.clipboardCopyAction"
             "workbench.action.clipboardPasteAction"
           ];
-
-          # Linting / language specifics
-          "eslint.validate" = [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
-          "eslint.run" = "onSave";
-
-          "python.formatting.provider" = "black";
-          "python.formatting.blackArgs" = [ "--line-length" "88" ];
-
-          # Session / restore
-          "window.restoreWindows" = "all";
-          "files.restoreUndoStack" = true;
-
-          # Per-language overrides: disable formatOnSave for slow formatters
-          "[nix]" = {
-            "editor.formatOnSave" = true;
-            # Prefer using an available fast formatter/LSP (rnix / rnix-lsp).
-            # You may need to configure the Nix extension to use the rnix LSP
-            # or set the `editor.defaultFormatter` here to the extension that
-            # provides rnix-format when installed.
-          };
-
-          # Updates & telemetry (managed by Nix)
+          "terminal.integrated.copyOnSelection" = true;
+          "terminal.integrated.defaultProfile.linux" = "bash";
+          "terminal.integrated.fontFamily" = "monospace";
+          "terminal.integrated.fontSize" = 14;
           "update.mode" = "none";
-          "telemetry.telemetryLevel" = "off";
-
-          # GitHub Copilot (install Copilot + Copilot Chat extension below)
-          "github.copilot.enable" = {
-            "*" = true;
-          };
-          "github.copilot.editor.enableAutoCompletions" = true;
+          "window.restoreWindows" = "all";
+          "workbench.editor.enablePreview" = false;
+          "workbench.startupEditor" = "none";
         };
 
         # Extensions
@@ -136,8 +106,28 @@ in
           github.copilot
           github.copilot-chat
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        # Add additional extensions from marketplace here
-        # Format: { name = "extension-name"; publisher = "publisher"; version = "x.x.x"; sha256 = "..."; }
+        # Extensions exported from your current VS Code installation (added as marketplace entries)
+        { publisher = "bierner"; name = "markdown-yaml-preamble"; }
+        { publisher = "cweijan"; name = "vscode-typora"; }
+        { publisher = "davidanson"; name = "vscode-markdownlint"; }
+        { publisher = "foam"; name = "foam-vscode"; }
+        { publisher = "github"; name = "vscode-github-actions"; }
+        { publisher = "jebbs"; name = "markdown-extended"; }
+        { publisher = "kortina"; name = "vscode-markdown-notes"; }
+        { publisher = "lencerf"; name = "beancount"; }
+        { publisher = "mathematic"; name = "vscode-pdf"; }
+        { publisher = "ms-playwright"; name = "playwright"; }
+        { publisher = "ms-python"; name = "debugpy"; }
+        { publisher = "ms-python"; name = "vscode-python-envs"; }
+        { publisher = "mushan"; name = "vscode-paste-image"; }
+        { publisher = "ritwickdey"; name = "liveserver"; }
+        { publisher = "shd101wyy"; name = "markdown-preview-enhanced"; }
+        { publisher = "svelte"; name = "svelte-vscode"; }
+        { publisher = "svsool"; name = "markdown-memo"; }
+        { publisher = "tobiastao"; name = "vscode-md"; }
+        { publisher = "tomoki1207"; name = "pdf"; }
+        { publisher = "willasm"; name = "obsidian-md-vsc"; }
+        { publisher = "zeitnergmbh"; name = "auto-git"; }
       ];
       };
     };
