@@ -21,7 +21,7 @@ in
       foreground = fcfcfc
       
       # Transparency (0.0 = fully transparent, 1.0 = fully opaque)
-      background-opacity = 0.95
+      background-opacity = 0.80
       
       # Cursor
       cursor-color = fcfcfc
