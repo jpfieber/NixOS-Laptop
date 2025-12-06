@@ -64,6 +64,14 @@ in
           "terminal.integrated.defaultProfile.linux" = "bash";
           "terminal.integrated.fontFamily" = "monospace";
           "terminal.integrated.fontSize" = 14;
+          # Make copy/paste easier in the integrated terminal
+          "terminal.integrated.copyOnSelection" = true;
+          "terminal.integrated.commandsToSkipShell" = [
+            "workbench.action.terminal.copySelection"
+            "workbench.action.terminal.paste"
+            "workbench.action.clipboardCopyAction"
+            "workbench.action.clipboardPasteAction"
+          ];
 
           # Linting / language specifics
           "eslint.validate" = [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
