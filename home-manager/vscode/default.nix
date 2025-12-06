@@ -47,6 +47,24 @@ in
         # Workbench
         "workbench.colorTheme" = "Default Dark Modern";
         "workbench.iconTheme" = "vs-seti";
+        "workbench.startupEditor" = "none";
+        "workbench.tips.enabled" = false;
+        
+        # Disable welcome/release notes
+        "update.showReleaseNotes" = false;
+        "workbench.welcomePage.walkthroughs.openOnInstall" = false;
+        
+        # Session management
+        "window.restoreWindows" = "all";
+        "files.restoreUndoStack" = true;
+        
+        # GitHub authentication
+        "github.gitAuthentication" = true;
+        "git.enableCommitSigning" = false;
+        
+        # Extension recommendations
+        "extensions.ignoreRecommendations" = true;
+        "extensions.showRecommendationsOnlyOnDemand" = true;
         
         # Disable telemetry and updates (managed by Nix)
         "telemetry.telemetryLevel" = "off";
