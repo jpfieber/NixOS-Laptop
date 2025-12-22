@@ -11,76 +11,72 @@ in
   config = lib.mkIf cfg.enable {
     programs.vscode = {
       enable = true;
-      
+
       profiles.default = {
-        # User settings
+        # User settings imported from your existing VS Code configuration
         userSettings = {
-          # Editor & formatting
-          "editor.formatOnSave" = true;
-          "editor.formatOnPaste" = true;
-          "editor.tabSize" = 2;
-          "editor.rulers" = [ 80 100 ];
-          "editor.codeActionsOnSave" = {
-            "source.organizeImports" = true;
-            "source.fixAll" = true;
+          "[nix]" = {
+            # Disable automatic formatting for Nix files to avoid the slow
+            # "Nix IDE" formatter running on save. Re-enable after configuring
+            # a fast formatter/LSP (rnix/rnix-lsp) if you prefer auto-format.
+            "editor.formatOnSave" = false;
           };
-
-          # Visual / UX
-          "workbench.startupEditor" = "none";
-          "workbench.editor.enablePreview" = false;
           "breadcrumbs.enabled" = true;
+          "editor.codeActionsOnSave" = {
+            "source.fixAll" = true;
+            "source.organizeImports" = true;
+          };
+          "editor.formatOnPaste" = true;
+          "editor.formatOnSave" = true;
+          "editor.rulers" = [ 80 100 ];
+          "editor.tabSize" = 2;
+          "eslint.run" = "onSave";
+          "eslint.validate" = [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
           "explorer.compactFolders" = false;
-
-          # Files / performance
-          "files.trimTrailingWhitespace" = true;
-          "files.insertFinalNewline" = true;
           "files.autoSave" = "afterDelay";
           "files.autoSaveDelay" = 1000;
-
-          "files.watcherExclude" = {
-            "**/.git/**" = true;
-            "**/node_modules/**" = true;
-            "**/target/**" = true;
-            "**/.cache/**" = true;
-          };
-
-          "search.exclude" = {
-            "**/node_modules" = true;
-            "**/target" = true;
-          };
-
           "files.exclude" = {
             "**/.DS_Store" = true;
             "**/.git" = true;
           };
-
-          # Git / SCM
-          "git.autofetch" = true;
-          "git.enableSmartCommit" = true;
-          "git.confirmSync" = false;
+          "files.insertFinalNewline" = true;
+          "files.restoreUndoStack" = true;
+          "files.trimTrailingWhitespace" = true;
+          "files.watcherExclude" = {
+            "**/.cache/**" = true;
+            "**/.git/**" = true;
+            "**/node_modules/**" = true;
+            "**/target/**" = true;
+          };
           "git.alwaysShowStagedChangesResourceGroup" = true;
-
-          # Terminal
+          "git.autofetch" = true;
+          "git.confirmSync" = false;
+          "git.enableSmartCommit" = true;
+          "github.copilot.editor.enableAutoCompletions" = true;
+          "github.copilot.enable" = { "*" = true; };
+          "python.formatting.blackArgs" = [ "--line-length" "88" ];
+          "python.formatting.provider" = "black";
+          "search.exclude" = {
+            "**/node_modules" = true;
+            "**/target" = true;
+          };
+          "telemetry.telemetryLevel" = "off";
+          "terminal.integrated.commandsToSkipShell" = [
+            "workbench.action.terminal.copySelection"
+            "workbench.action.terminal.paste"
+            "workbench.action.clipboardCopyAction"
+            "workbench.action.clipboardPasteAction"
+          ];
+          "terminal.integrated.copyOnSelection" = true;
           "terminal.integrated.defaultProfile.linux" = "bash";
           "terminal.integrated.fontFamily" = "monospace";
           "terminal.integrated.fontSize" = 14;
-
-          # Linting / language specifics
-          "eslint.validate" = [ "javascript" "javascriptreact" "typescript" "typescriptreact" ];
-          "eslint.run" = "onSave";
-
-          "python.formatting.provider" = "black";
-          "python.formatting.blackArgs" = [ "--line-length" "88" ];
-
-          # Session / restore
-          "window.restoreWindows" = "all";
-          "files.restoreUndoStack" = true;
-
-          # Updates & telemetry (managed by Nix)
           "update.mode" = "none";
-          "telemetry.telemetryLevel" = "off";
+          "window.restoreWindows" = "all";
+          "workbench.editor.enablePreview" = false;
+          "workbench.startupEditor" = "none";
         };
-        
+
         # Extensions
         extensions = with pkgs.vscode-extensions; [
           # Nix language support
@@ -89,6 +85,7 @@ in
           # Python
           ms-python.python
           ms-python.vscode-pylance
+          ms-python.debugpy
 
           # Formatters / linters
           esbenp.prettier-vscode
@@ -102,17 +99,29 @@ in
           ms-azuretools.vscode-docker
           ms-vscode-remote.remote-ssh
 
+          # Markdown / note tooling
+          davidanson.vscode-markdownlint
+          foam.foam-vscode
+          shd101wyy.markdown-preview-enhanced
+          tomoki1207.pdf
+
           # Languages / LSPs
           rust-lang.rust-analyzer
+
+          # Web / UI
+          svelte.svelte-vscode
 
           # Productivity / misc
           streetsidesoftware.code-spell-checker
           yzhang.markdown-all-in-one
           editorconfig.editorconfig
           ms-vscode.powershell
+          github.copilot
+          github.copilot-chat
         ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        # Add additional extensions from marketplace here
-        # Format: { name = "extension-name"; publisher = "publisher"; version = "x.x.x"; sha256 = "..."; }
+        # Marketplace extension entries must include `version` and `sha256` for
+        # reproducible builds. Leave empty for now — add specific pinned
+        # entries later if you want these installed declaratively.
       ];
       };
     };

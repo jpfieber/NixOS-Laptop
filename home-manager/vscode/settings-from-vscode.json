@@ -1,0 +1,72 @@
+{
+  "[nix]": {
+    "editor.formatOnSave": true
+  },
+  "breadcrumbs.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    80,
+    100
+  ],
+  "editor.tabSize": 2,
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "explorer.compactFolders": false,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true
+  },
+  "files.insertFinalNewline": true,
+  "files.restoreUndoStack": true,
+  "files.trimTrailingWhitespace": true,
+  "files.watcherExclude": {
+    "**/.cache/**": true,
+    "**/.git/**": true,
+    "**/node_modules/**": true,
+    "**/target/**": true
+  },
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.enable": {
+    "*": true
+  },
+  "python.formatting.blackArgs": [
+    "--line-length",
+    "88"
+  ],
+  "python.formatting.provider": "black",
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/target": true
+  },
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.terminal.copySelection",
+    "workbench.action.terminal.paste",
+    "workbench.action.clipboardCopyAction",
+    "workbench.action.clipboardPasteAction"
+  ],
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.fontFamily": "monospace",
+  "terminal.integrated.fontSize": 14,
+  "update.mode": "none",
+  "window.restoreWindows": "all",
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "none"
+}
