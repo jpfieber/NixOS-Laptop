@@ -43,7 +43,7 @@
 
   # Shell aliases for all users
   environment.shellAliases = {
-    nrs = "cd /etc/nixos && git pull && sudo nixos-rebuild switch --flake .#nixos";
+    nrs = "cd ~/nixos-config && git pull && sudo nixos-rebuild switch --flake .#nixos";
   };
 
   # This value determines the NixOS release from which the default

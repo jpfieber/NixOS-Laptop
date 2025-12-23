@@ -13,7 +13,9 @@ in
     home.file.".config/powershell/Microsoft.PowerShell_profile.ps1".text = ''
       # NixOS rebuild alias
       function nrs {
-        sudo nixos-rebuild switch --flake ~/nixos-config#nixos
+        Set-Location ~/nixos-config
+        git pull
+        sudo nixos-rebuild switch --flake .#nixos
       }
       
       # Additional useful aliases
