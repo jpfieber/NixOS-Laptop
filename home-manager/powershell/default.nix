@@ -17,7 +17,7 @@ in
         git pull
         sudo nixos-rebuild switch --flake .#nixos
       }
-      
+
       # Additional useful aliases
       Set-Alias -Name ll -Value Get-ChildItem
     '';
