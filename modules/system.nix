@@ -11,30 +11,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
-  
-  # Clean up old GRUB installation on next boot
-  boot.loader.grub.enable = false;
-  
-  # One-time systemd service to clean GRUB remnants and ensure systemd-boot is properly installed
-  systemd.services.cleanup-grub = {
-    description = "Clean up GRUB remnants and install systemd-boot";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "local-fs.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-    script = ''
-      if [ -d /boot/EFI/NIXOS ] || [ -d /boot/grub ]; then
-        echo "Cleaning up old GRUB files..."
-        rm -rf /boot/EFI/NIXOS /boot/grub
-        echo "Installing systemd-boot..."
-        ${pkgs.systemd}/bin/bootctl install --path=/boot
-        echo "GRUB cleanup complete. Disabling this service..."
-        systemctl disable cleanup-grub.service
-      fi
-    '';
-  };
 
   # Swap configuration - helps prevent OOM kills during builds
   swapDevices = [
