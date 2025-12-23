@@ -120,12 +120,12 @@ sleep 2
 
 # Step 4: Mount filesystems
 echo -e "${YELLOW}[4/8] Mounting filesystems...${NC}"
-mount -o subvol=root,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}
+mount -o subvol=root,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}
 mkdir -p ${MOUNT_POINT}/{boot,home,nix,.snapshots}
-mount ${DEVICE}${PART_PREFIX}1 ${MOUNT_POINT}/boot
-mount -o subvol=home,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}/home
-mount -o subvol=nix,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}/nix
-mount -o subvol=snapshots,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}/.snapshots
+mount ${DEVICE}p1 ${MOUNT_POINT}/boot
+mount -o subvol=home,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}/home
+mount -o subvol=nix,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}/nix
+mount -o subvol=snapshots,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}/.snapshots
 echo -e "${GREEN}✓ Filesystems mounted${NC}"
 sleep 2
 

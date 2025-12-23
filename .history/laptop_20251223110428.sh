@@ -56,14 +56,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Warning about data destruction
-echo ""
 echo -e "${RED}WARNING: This will DESTROY ALL DATA on ${DEVICE}${NC}"
 echo -e "${RED}Make sure you have backed up everything!${NC}"
 echo ""
-echo -e "${YELLOW}Device details:${NC}"
-lsblk ${DEVICE}
-echo ""
-fdisk -l ${DEVICE} | head -10
+lsblk
 echo ""
 read -p "Type 'I have backed up my data' to continue: " backup_confirm
 if [ "$backup_confirm" != "I have backed up my data" ]; then
@@ -72,24 +68,15 @@ if [ "$backup_confirm" != "I have backed up my data" ]; then
 fi
 
 echo ""
-read -p "Type the device name to confirm (e.g., sda, nvme0n1, mmcblk0): " device_confirm
+read -p "Type the device name to confirm (e.g., sda): " device_confirm
 if [ "/dev/$device_confirm" != "$DEVICE" ]; then
     echo -e "${RED}Device name doesn't match. Aborted.${NC}"
     exit 1
 fi
 
-# Determine partition naming scheme
-if [[ "$DEVICE" == *"nvme"* ]] || [[ "$DEVICE" == *"mmcblk"* ]]; then
-    PART_PREFIX="p"
-else
-    PART_PREFIX=""
-fi
-
 echo ""
 echo -e "${GREEN}Starting installation...${NC}"
-echo -e "${YELLOW}Will create partitions: ${DEVICE}${PART_PREFIX}1 and ${DEVICE}${PART_PREFIX}2${NC}"
 echo ""
-sleep 3
 
 # Step 1: Partition the disk
 echo -e "${YELLOW}[1/8] Partitioning ${DEVICE}...${NC}"
@@ -102,14 +89,14 @@ sleep 2
 
 # Step 2: Format partitions
 echo -e "${YELLOW}[2/8] Formatting partitions...${NC}"
-mkfs.fat -F 32 -n boot ${DEVICE}${PART_PREFIX}1
-mkfs.btrfs -f -L nixos ${DEVICE}${PART_PREFIX}2
+mkfs.fat -F 32 -n boot ${DEVICE}p1
+mkfs.btrfs -f -L nixos ${DEVICE}p2
 echo -e "${GREEN}✓ Formatting complete${NC}"
 sleep 2
 
 # Step 3: Create Btrfs subvolumes
 echo -e "${YELLOW}[3/8] Creating Btrfs subvolumes...${NC}"
-mount ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}
+mount ${DEVICE}p2 ${MOUNT_POINT}
 btrfs subvolume create ${MOUNT_POINT}/root
 btrfs subvolume create ${MOUNT_POINT}/home
 btrfs subvolume create ${MOUNT_POINT}/nix
@@ -120,12 +107,12 @@ sleep 2
 
 # Step 4: Mount filesystems
 echo -e "${YELLOW}[4/8] Mounting filesystems...${NC}"
-mount -o subvol=root,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}
+mount -o subvol=root,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}
 mkdir -p ${MOUNT_POINT}/{boot,home,nix,.snapshots}
-mount ${DEVICE}${PART_PREFIX}1 ${MOUNT_POINT}/boot
-mount -o subvol=home,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}/home
-mount -o subvol=nix,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}/nix
-mount -o subvol=snapshots,compress=zstd,noatime ${DEVICE}${PART_PREFIX}2 ${MOUNT_POINT}/.snapshots
+mount ${DEVICE}p1 ${MOUNT_POINT}/boot
+mount -o subvol=home,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}/home
+mount -o subvol=nix,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}/nix
+mount -o subvol=snapshots,compress=zstd,noatime ${DEVICE}p2 ${MOUNT_POINT}/.snapshots
 echo -e "${GREEN}✓ Filesystems mounted${NC}"
 sleep 2
 
