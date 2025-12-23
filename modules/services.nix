@@ -40,10 +40,12 @@
   };
 
   # Configure laptop lid behavior - ignore lid close to keep system awake
-  services.logind = {
-    lidSwitch = "ignore";
-    lidSwitchDocked = "ignore";
-    lidSwitchExternalPower = "ignore";
+  services.logind.settings = {
+    Login = {
+      HandleLidSwitch = "ignore";
+      HandleLidSwitchDocked = "ignore";
+      HandleLidSwitchExternalPower = "ignore";
+    };
   };
 
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
