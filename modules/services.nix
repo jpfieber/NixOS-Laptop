@@ -6,7 +6,7 @@
     enable = true;
     drivers = [ pkgs.brlaser ];  # Brother laser printer driver
   };
-  
+
   # Pre-configure Brother printer
   hardware.printers = {
     ensurePrinters = [
@@ -22,7 +22,7 @@
     ];
     ensureDefaultPrinter = "Brother_HL-L2340D";
   };
-  
+
   # Avahi for network printer discovery
   services.avahi = {
     enable = true;
