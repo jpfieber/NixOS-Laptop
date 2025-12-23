@@ -48,15 +48,16 @@
 
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
   # Only enable if the age key file exists
-  sops = {
-    defaultSopsFile = ../secrets/secrets.yaml;
-    age.keyFile = "/var/lib/sops-nix/key.txt";
-    validateSopsFiles = false;  # Don't fail if secrets can't be decrypted during install
-    secrets.rclone-conf = {
-      path = "/home/jpfieber/.config/rclone/rclone.conf";
-      owner = "jpfieber";
-      group = "users";
-      mode = "0600";
-    };
-  };
+  # Temporarily disabled - uncomment when key file is set up
+  # sops = {
+  #   defaultSopsFile = ../secrets/secrets.yaml;
+  #   age.keyFile = "/var/lib/sops-nix/key.txt";
+  #   validateSopsFiles = false;  # Don't fail if secrets can't be decrypted during install
+  #   secrets.rclone-conf = {
+  #     path = "/home/jpfieber/.config/rclone/rclone.conf";
+  #     owner = "jpfieber";
+  #     group = "users";
+  #     mode = "0600";
+  #   };
+  # };
 }
