@@ -92,16 +92,13 @@ echo ""
 
 # Deactivate any LVM volumes and unmount partitions
 echo -e "${YELLOW}Deactivating LVM and unmounting partitions on ${DEVICE}...${NC}"
+# Deactivate all LVM logical volumes and volume groups
+vgchange -an 2>/dev/null || true
 # Unmount any mounted partitions
 umount ${DEVICE}${PART_PREFIX}* 2>/dev/null || true
 umount ${DEVICE}* 2>/dev/null || true
-# Deactivate only LVM volumes on this specific device
-for vg in $(pvs --noheadings -o vg_name 2>/dev/null | grep -v "^\s*$" | sort -u); do
-    if pvs --noheadings -o pv_name,vg_name 2>/dev/null | grep "$vg" | grep -q "$DEVICE"; then
-        echo "Deactivating volume group: $vg"
-        vgchange -an "$vg" 2>/dev/null || true
-    fi
-done
+# Force remove any device mapper entries
+dmsetup remove_all 2>/dev/null || true
 echo -e "${GREEN}✓ Deactivated and unmounted${NC}"
 sleep 2
 
@@ -182,10 +179,9 @@ echo -e "${GREEN}  Installation Complete!${NC}"
 echo -e "${GREEN}================================================${NC}"
 echo ""
 echo -e "${YELLOW}Next steps:${NC}"
-echo "1. Remove the USB drive"
-echo "2. Reboot and enter BIOS if needed to select 'NIXOS' boot entry"
-echo "3. After first boot, log in as jpfieber"
-echo "4. Restore age key:"
+echo "1. Set the root password when prompted (if not already done)"
+echo "2. After reboot, log in as jpfieber"
+echo "3. Restore age key:"
 echo "   sudo mkdir -p /var/lib/sops-nix"
 echo "   sudo cp /path/to/age-key-backup.txt /var/lib/sops-nix/key.txt"
 echo "   sudo chmod 600 /var/lib/sops-nix/key.txt"

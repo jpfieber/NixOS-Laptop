@@ -7,10 +7,13 @@
     download-buffer-size = 134217728;  # 128MB
   };
 
-  # Bootloader.
+  # Bootloader - UEFI configuration
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "nodev";
+  boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot";
 
   # Swap configuration - helps prevent OOM kills during builds
   swapDevices = [

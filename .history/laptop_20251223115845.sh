@@ -92,16 +92,13 @@ echo ""
 
 # Deactivate any LVM volumes and unmount partitions
 echo -e "${YELLOW}Deactivating LVM and unmounting partitions on ${DEVICE}...${NC}"
+# Deactivate all LVM logical volumes and volume groups
+vgchange -an 2>/dev/null || true
 # Unmount any mounted partitions
 umount ${DEVICE}${PART_PREFIX}* 2>/dev/null || true
 umount ${DEVICE}* 2>/dev/null || true
-# Deactivate only LVM volumes on this specific device
-for vg in $(pvs --noheadings -o vg_name 2>/dev/null | grep -v "^\s*$" | sort -u); do
-    if pvs --noheadings -o pv_name,vg_name 2>/dev/null | grep "$vg" | grep -q "$DEVICE"; then
-        echo "Deactivating volume group: $vg"
-        vgchange -an "$vg" 2>/dev/null || true
-    fi
-done
+# Force remove any device mapper entries
+dmsetup remove_all 2>/dev/null || true
 echo -e "${GREEN}✓ Deactivated and unmounted${NC}"
 sleep 2
 
