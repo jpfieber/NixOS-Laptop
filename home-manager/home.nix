@@ -21,6 +21,7 @@
     ./powershell
     ./ghostty
     ./syncthing
+    ./plasma
   ];
 
   # Enable app modules
@@ -31,10 +32,7 @@
   apps.powershell.enable = true;
   apps.ghostty.enable = true;
   apps.syncthing.enable = true;
+  apps.plasma.enable = true;
 
   # Note: keybindings.json is managed locally to allow VS Code sync.
-
-  # Note: KDE Plasma appearance settings (theme, icons, wallpaper, etc.)
-  # are configured manually through System Settings.
-  # This is the standard approach for NixOS + KDE users.
 }
