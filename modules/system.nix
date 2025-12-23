@@ -46,6 +46,17 @@
     nrs = "cd ~/nixos-config && git pull && sudo nixos-rebuild switch --flake .#nixos";
   };
 
+  # Allow shutdown/reboot from remote sessions (RDP, SSH)
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+        if ((action.id == "org.freedesktop.login1.power-off" ||
+             action.id == "org.freedesktop.login1.reboot") &&
+            subject.isInGroup("wheel")) {
+            return polkit.Result.YES;
+        }
+    });
+  '';
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
