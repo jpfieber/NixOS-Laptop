@@ -21,7 +21,7 @@
     ./powershell
     ./ghostty
     ./syncthing
-    ./plasma
+    # ./plasma  # Disabled - manage Plasma settings manually
   ];
 
   # Enable app modules
@@ -32,7 +32,7 @@
   apps.powershell.enable = true;
   apps.ghostty.enable = true;
   apps.syncthing.enable = true;
-  # Note: plasma configuration is imported directly, no enable option needed
+  # Plasma configuration disabled - manage settings manually through System Settings
 
   # Note: keybindings.json is managed locally to allow VS Code sync.
 }
