@@ -7,11 +7,8 @@
     download-buffer-size = 134217728;  # 128MB
   };
 
-  # Bootloader - UEFI configuration
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
+  # Bootloader - UEFI with systemd-boot (more reliable for rebuilds)
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
