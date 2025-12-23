@@ -39,6 +39,9 @@
     };
   };
 
+  # Configure laptop lid behavior - ignore lid close to keep system awake
+  services.logind.lidSwitchAction = "ignore";
+
   # Sops secrets configuration - automatically deploys encrypted rclone.conf
   # Only enable if the age key file exists
   sops = {
