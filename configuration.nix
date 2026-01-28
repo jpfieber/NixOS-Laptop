@@ -162,7 +162,14 @@
   };
   services = {
     displayManager.enable = true;
-    displayManager.ly.enable = true;
+    displayManager.ly = {
+      enable = true;
+      settings = {
+        hide_borders = true;
+        hide_f1_commands = true;
+      };
+    };
+    displayManager.defaultSession = "niri";
     # services.openssh.enable = true;
   }; 
   programs = {
