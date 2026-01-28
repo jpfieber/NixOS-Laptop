@@ -171,7 +171,7 @@
     };
     displayManager.defaultSession = "niri";
     # services.openssh.enable = true;
-  }; 
+  };
   programs = {
     nix-ld.enable = true;
     niri.enable = true;
